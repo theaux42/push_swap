@@ -6,7 +6,7 @@
 /*   By: tbabou <tbabou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 02:45:52 by tbabou            #+#    #+#             */
-/*   Updated: 2024/08/17 15:09:55 by tbabou           ###   ########.fr       */
+/*   Updated: 2024/08/17 15:20:06 by tbabou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,16 @@
 
 void	parsing(t_stack_node **a, int argc, char **argv)
 {
-	char			**argv2;
+	char	**argv2;
 
 	argv2 = argv;
 	if (argc < 2)
-		exit (1);
+		exit(1);
 	else if (argc == 2)
 	{
 		argv2 = ps_split(argv[1], ' ');
 		if (!argv2)
-			exit (1);
+			exit(1);
 	}
 	if (argc == 2)
 	{
@@ -43,11 +43,11 @@ int	main(int argc, char **argv)
 	a = NULL;
 	b = NULL;
 	parsing(&a, argc, argv);
-	if (!is_sorted(a))
+	if (!ft_issorted(a))
 	{
-		if (stack_len(a) == 2)
+		if (ft_stacklen(a) == 2)
 			sa(&a, false);
-		else if (stack_len(a) == 3)
+		else if (ft_stacklen(a) == 3)
 			sort_three(&a);
 		else
 			turk_sort(&a, &b);
@@ -58,8 +58,8 @@ int	main(int argc, char **argv)
 
 int	ft_strlenw0(const char *s)
 {
-	int	i;
-	int	index;
+	int i;
+	int index;
 
 	i = 0;
 	if (s[i] == '+' || s[i] == '-')

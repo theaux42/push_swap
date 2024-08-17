@@ -6,7 +6,7 @@
 /*   By: tbabou <tbabou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 21:44:46 by tbabou            #+#    #+#             */
-/*   Updated: 2024/08/17 15:09:55 by tbabou           ###   ########.fr       */
+/*   Updated: 2024/08/17 15:20:06 by tbabou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,12 @@ void	turk_sort(t_stack_node **a, t_stack_node **b)
 {
 	int	len_a;
 
-	len_a = stack_len(*a);
-	if (len_a-- > 3 && !is_sorted(*a))
+	len_a = ft_stacklen(*a);
+	if (len_a-- > 3 && !ft_issorted(*a))
 		pb(b, a, false);
-	if (len_a-- > 3 && !is_sorted(*a))
+	if (len_a-- > 3 && !ft_issorted(*a))
 		pb(b, a, false);
-	while (len_a-- > 3 && !is_sorted(*a))
+	while (len_a-- > 3 && !ft_issorted(*a))
 	{
 		init_node_a(*a, *b);
 		move_a_2_b(a, b);

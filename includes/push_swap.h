@@ -6,7 +6,7 @@
 /*   By: tbabou <tbabou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 02:22:48 by tbabou            #+#    #+#             */
-/*   Updated: 2024/08/17 15:09:55 by tbabou           ###   ########.fr       */
+/*   Updated: 2024/08/17 15:20:06 by tbabou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <limits.h>
 # include <stdbool.h>
+# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 
@@ -46,9 +47,8 @@ void					current_index(t_stack_node *stack);
 void					set_cheapest(t_stack_node *stack);
 void					init_node_a(t_stack_node *a, t_stack_node *b);
 void					init_node_b(t_stack_node *a, t_stack_node *b);
-bool					is_sorted(t_stack_node *stack);
+bool					ft_issorted(t_stack_node *stack);
 char					**ps_split(char *s, char c);
-void					print_stack(t_stack_node *a, t_stack_node *b);
 void					sort_three(t_stack_node **a);
 void					turk_sort(t_stack_node **a, t_stack_node **b);
 void					sa(t_stack_node **a, bool print);
@@ -57,9 +57,8 @@ void					ra(t_stack_node **a, bool print);
 void					rb(t_stack_node **b, bool print);
 void					rra(t_stack_node **a, bool print);
 void					rrb(t_stack_node **b, bool print);
-char					**free_array(char **array);
 void					leak(char **splitted);
-int						stack_len(t_stack_node *stack);
+int						ft_stacklen(t_stack_node *stack);
 int						syntaxe_error(char *str_n);
 int						doublons_error(t_stack_node *a, int n);
 void					ss(t_stack_node **a, t_stack_node **b, bool p);
