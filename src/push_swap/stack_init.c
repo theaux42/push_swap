@@ -6,7 +6,7 @@
 /*   By: tbabou <tbabou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 19:48:20 by tbabou            #+#    #+#             */
-/*   Updated: 2024/08/20 20:31:59 by tbabou           ###   ########.fr       */
+/*   Updated: 2024/08/21 00:44:44 by tbabou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,24 @@
 static long	ft_atol(const char *s)
 {
 	long	res;
-	int		sign;
+	int		neg;
 
 	if (ft_strlen_no_zero(s) > 11)
 		error_r(2);
 	res = 0;
-	sign = 1;
+	neg = 1;
 	while (*s == ' ' || *s == '\t' || *s == '\n' || *s == '\r' || *s == '\f'
 		|| *s == '\v')
 		s++;
 	while (*s == '-' || *s == '+')
 	{
 		if (*s == '-')
-			sign *= -1;
+			neg *= -1;
 		s++;
 	}
 	while (*s >= '0' && *s <= '9')
 		res = res * 10 + (*s++ - '0');
-	return (res * sign);
+	return (res * neg);
 }
 
 static void	add_node_to_stack(t_stack_node **stack, int n)

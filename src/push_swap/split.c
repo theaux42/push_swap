@@ -6,7 +6,7 @@
 /*   By: tbabou <tbabou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 20:53:46 by tbabou            #+#    #+#             */
-/*   Updated: 2024/08/20 20:48:24 by tbabou           ###   ########.fr       */
+/*   Updated: 2024/08/21 00:42:47 by tbabou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,17 @@
 char	**ft_split(char *s, char c)
 {
 	char	**result_array;
-	int		words_count;
+	int		wordcount;
 	int		i;
 
 	i = 0;
-	words_count = ft_countwords(s, c);
-	if (!words_count)
+	wordcount = ft_countwords(s, c);
+	if (!wordcount)
 		error_r(1);
-	result_array = malloc(sizeof(char *) * (size_t)(words_count + 2));
+	result_array = malloc(sizeof(char *) * (size_t)(wordcount + 2));
 	if (!result_array)
 		return (NULL);
-	while (words_count-- >= 0)
+	while (wordcount-- >= 0)
 	{
 		if (i == 0)
 		{
@@ -43,10 +43,10 @@ char	**ft_split(char *s, char c)
 
 int	ft_countwords(char *str, char delimeter)
 {
-	int		words;
+	int		wordcount;
 	bool	is_word;
 
-	words = 0;
+	wordcount = 0;
 	while (*str)
 	{
 		is_word = false;
@@ -56,27 +56,27 @@ int	ft_countwords(char *str, char delimeter)
 		{
 			if (!is_word)
 			{
-				++words;
+				++wordcount;
 				is_word = true;
 			}
 			++str;
 		}
 	}
-	return (words);
+	return (wordcount);
 }
 
 char	*get_next_word(char *str, char delimeter, char **r)
 {
-	static int	cursor = 0;
+	static int	current = 0;
 	char		*next;
 	int			i;
 	int			len;
 
 	i = 0;
 	len = 0;
-	while (str[cursor] == delimeter)
-		++cursor;
-	while ((str[cursor + len] != delimeter) && str[cursor + len])
+	while (str[current] == delimeter)
+		++current;
+	while ((str[current + len] != delimeter) && str[current + len])
 		++len;
 	next = malloc((size_t)len * sizeof(char) + 1);
 	if (!next)
@@ -84,8 +84,8 @@ char	*get_next_word(char *str, char delimeter, char **r)
 		ft_freesplit(r);
 		exit(1);
 	}
-	while ((str[cursor] != delimeter) && str[cursor])
-		next[i++] = str[cursor++];
+	while ((str[current] != delimeter) && str[current])
+		next[i++] = str[current++];
 	next[i] = '\0';
 	return (next);
 }

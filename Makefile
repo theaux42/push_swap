@@ -6,7 +6,7 @@
 #    By: tbabou <tbabou@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/15 15:59:30 by tbabou            #+#    #+#              #
-#    Updated: 2024/08/20 20:59:32 by tbabou           ###   ########.fr        #
+#    Updated: 2024/08/21 00:44:23 by tbabou           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,8 +27,8 @@ COMMANDS_DIR			=	$(SRC_DIR)commands/push.c \
 						$(SRC_DIR)commands/swap.c \
 
 PUSH_SWAP_DIR			=	$(SRC_DIR)push_swap/error.c \
-						$(SRC_DIR)push_swap/a_2_b.c \
-						$(SRC_DIR)push_swap/b_2_a.c \
+						$(SRC_DIR)push_swap/target_a.c \
+						$(SRC_DIR)push_swap/target_b.c \
 						$(SRC_DIR)push_swap/push_swap.c \
 						$(SRC_DIR)push_swap/split.c \
 						$(SRC_DIR)push_swap/stack_init.c \

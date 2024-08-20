@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   a_2_b.c                                            :+:      :+:    :+:   */
+/*   target_b.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tbabou <tbabou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 17:53:59 by tbabou            #+#    #+#             */
-/*   Updated: 2024/08/20 14:46:33 by tbabou           ###   ########.fr       */
+/*   Updated: 2024/08/21 00:43:57 by tbabou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,22 +37,22 @@ static void	set_target_a(t_stack_node *a, t_stack_node *b)
 {
 	t_stack_node	*current_b;
 	t_stack_node	*target_node;
-	long			best_match_index;
+	long			match_index;
 
 	while (a)
 	{
-		best_match_index = LONG_MIN;
+		match_index = LONG_MIN;
 		current_b = b;
 		while (current_b)
 		{
-			if (current_b->nb < a->nb && current_b->nb > best_match_index)
+			if (current_b->nb < a->nb && current_b->nb > match_index)
 			{
-				best_match_index = current_b->nb;
+				match_index = current_b->nb;
 				target_node = current_b;
 			}
 			current_b = current_b->next;
 		}
-		if (best_match_index == LONG_MIN)
+		if (match_index == LONG_MIN)
 			a->target = get_max(b);
 		else
 			a->target = target_node;
