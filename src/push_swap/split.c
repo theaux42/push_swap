@@ -6,7 +6,7 @@
 /*   By: tbabou <tbabou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 20:53:46 by tbabou            #+#    #+#             */
-/*   Updated: 2024/08/20 14:44:21 by tbabou           ###   ########.fr       */
+/*   Updated: 2024/08/20 20:48:24 by tbabou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	**ft_split(char *s, char c)
 	i = 0;
 	words_count = ft_countwords(s, c);
 	if (!words_count)
-		error_r();
+		error_r(1);
 	result_array = malloc(sizeof(char *) * (size_t)(words_count + 2));
 	if (!result_array)
 		return (NULL);
@@ -41,7 +41,7 @@ char	**ft_split(char *s, char c)
 	return (result_array);
 }
 
-static int	ft_countwords(char *str, char delimeter)
+int	ft_countwords(char *str, char delimeter)
 {
 	int		words;
 	bool	is_word;
@@ -65,7 +65,7 @@ static int	ft_countwords(char *str, char delimeter)
 	return (words);
 }
 
-static char	*get_next_word(char *str, char delimeter, char **r)
+char	*get_next_word(char *str, char delimeter, char **r)
 {
 	static int	cursor = 0;
 	char		*next;

@@ -6,7 +6,7 @@
 /*   By: tbabou <tbabou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 02:22:48 by tbabou            #+#    #+#             */
-/*   Updated: 2024/08/20 14:46:33 by tbabou           ###   ########.fr       */
+/*   Updated: 2024/08/20 20:48:17 by tbabou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void					rrotate2(t_stack_node **a, t_stack_node **b,
 							t_stack_node *cheap_n);
 void					for_each_push(t_stack_node **stack, t_stack_node *top_n,
 							char name);
-void					print_error(t_stack_node **a, char **r);
+void					print_error(t_stack_node **a, char **r, int reason);
 void					free_stack(t_stack_node **stack);
 void					init_stack_a(t_stack_node **a, char **argv, char **r);
 void					current_index(t_stack_node *stack);
@@ -48,15 +48,20 @@ void					turk_sort(t_stack_node **a, t_stack_node **b);
 int						get_stack_len(t_stack_node *stack);
 int						syntaxe_error(char *str_n);
 int						doublons_error(t_stack_node *a, int n);
-void					error_r(void);
+void					error_r(int reason);
 int						ft_strlen_no_zero(const char *s);
+// functions related to strings.c
+void					ft_putstr(char *str);
+void					ft_putendl(char *str);
+void					ft_putnbr(int n);
 // functions related to tools.c
 t_stack_node			*get_cheapest(t_stack_node *stack);
 t_stack_node			*get_last(t_stack_node *stack);
 t_stack_node			*get_max(t_stack_node *stack);
 t_stack_node			*get_min(t_stack_node *stack);
 // function related to split.c
-static int				ft_countwords(char *str, char delimeter);
+int						ft_countwords(char *str, char delimeter);
+char					*get_next_word(char *str, char delimeter, char **r);
 char					**ft_split(char *s, char c);
 void					ft_freesplit(char **splitted);
 // commands of push_swap

@@ -6,7 +6,7 @@
 /*   By: tbabou <tbabou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 20:19:19 by tbabou            #+#    #+#             */
-/*   Updated: 2024/08/20 14:20:17 by tbabou           ###   ########.fr       */
+/*   Updated: 2024/08/20 20:50:31 by tbabou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,16 +57,30 @@ void	free_stack(t_stack_node **stack)
 	*stack = NULL;
 }
 
-void	print_error(t_stack_node **a, char **r)
+void	print_error(t_stack_node **a, char **r, int reason)
 {
 	free_stack(a);
 	ft_freesplit(r);
-	write(2, "ERROR :/\n", 9);
+	ft_putstr("[\e[0;31mERROR\e[0m] ");
+	if (reason == 1)
+		ft_putendl("=> There is a syntax error in the list.");
+	else if (reason == 2)
+		ft_putendl("=> There is a value out of the int range.");
+	else if (reason == 3)
+		ft_putendl("=> There is a duplicate in the list.");
+	else
+		ft_putendl("=> How is this possible ?");
 	exit(1);
 }
 
-void	error_r(void)
+void	error_r(int reason)
 {
-	write(2, "ERROR :/\n", 9);
+	ft_putstr("[\e[0;31mERROR\e[0m] ");
+	if (reason == 1)
+		ft_putendl(" => There is a syntax error in the list.");
+	else if (reason == 2)
+		ft_putendl(" => There is a value out of the int range.");
+	else
+		ft_putendl(" => How is this possible ?");
 	exit(1);
 }

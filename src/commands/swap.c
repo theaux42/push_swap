@@ -6,7 +6,7 @@
 /*   By: tbabou <tbabou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 00:06:50 by tbabou            #+#    #+#             */
-/*   Updated: 2024/08/17 15:09:55 by tbabou           ###   ########.fr       */
+/*   Updated: 2024/08/20 20:23:38 by tbabou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,14 @@ void	sa(t_stack_node **a, bool print)
 {
 	swap(a);
 	if (!print)
-		write(1, "sa\n", 3);
+		ft_putendl("sa");
 }
 
 void	sb(t_stack_node **b, bool print)
 {
 	swap(b);
 	if (!print)
-		write(1, "sb\n", 3);
+		ft_putendl("sb");
 }
 
 void	ss(t_stack_node **a, t_stack_node **b, bool p)
@@ -47,5 +47,5 @@ void	ss(t_stack_node **a, t_stack_node **b, bool p)
 	swap(a);
 	swap(b);
 	if (!p)
-		write(1, "ss\n", 3);
+		ft_putendl("ss");
 }
