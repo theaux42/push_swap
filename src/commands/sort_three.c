@@ -6,7 +6,7 @@
 /*   By: tbabou <tbabou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 21:08:41 by tbabou            #+#    #+#             */
-/*   Updated: 2024/08/17 15:09:55 by tbabou           ###   ########.fr       */
+/*   Updated: 2024/08/20 14:40:42 by tbabou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	sort_three(t_stack_node **a)
 {
 	t_stack_node	*biggest;
 
-	biggest = max_o_stack(*a);
+	biggest = get_max(*a);
 	if (biggest == *a)
 		ra(a, false);
 	else if ((*a)->next == biggest)

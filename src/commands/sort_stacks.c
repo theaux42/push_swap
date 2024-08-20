@@ -6,7 +6,7 @@
 /*   By: tbabou <tbabou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 21:44:46 by tbabou            #+#    #+#             */
-/*   Updated: 2024/08/17 15:20:06 by tbabou           ###   ########.fr       */
+/*   Updated: 2024/08/20 14:46:33 by tbabou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	move_a_2_b(t_stack_node **a, t_stack_node **b)
 {
 	t_stack_node	*thecheapest;
 
-	thecheapest = the_cheapest(*a);
+	thecheapest = get_cheapest(*a);
 	if (thecheapest->above_med && thecheapest->target->above_med)
 		rotate2(a, b, thecheapest);
 	else if (!(thecheapest)->above_med && !(thecheapest)->target->above_med)
@@ -43,9 +43,9 @@ static void	move_b_2_a(t_stack_node **a, t_stack_node **b)
 
 static void	put_top(t_stack_node **a)
 {
-	while ((*a)->nb != min_o_stack(*a)->nb)
+	while ((*a)->nb != get_min(*a)->nb)
 	{
-		if (min_o_stack(*a)->above_med)
+		if (get_min(*a)->above_med)
 			ra(a, false);
 		else
 			rra(a, false);
@@ -56,12 +56,12 @@ void	turk_sort(t_stack_node **a, t_stack_node **b)
 {
 	int	len_a;
 
-	len_a = ft_stacklen(*a);
-	if (len_a-- > 3 && !ft_issorted(*a))
+	len_a = get_stack_len(*a);
+	if (len_a-- > 3 && !is_sorted(*a))
 		pb(b, a, false);
-	if (len_a-- > 3 && !ft_issorted(*a))
+	if (len_a-- > 3 && !is_sorted(*a))
 		pb(b, a, false);
-	while (len_a-- > 3 && !ft_issorted(*a))
+	while (len_a-- > 3 && !is_sorted(*a))
 	{
 		init_node_a(*a, *b);
 		move_a_2_b(a, b);

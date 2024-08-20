@@ -6,7 +6,7 @@
 /*   By: tbabou <tbabou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 02:45:52 by tbabou            #+#    #+#             */
-/*   Updated: 2024/08/17 15:20:06 by tbabou           ###   ########.fr       */
+/*   Updated: 2024/08/20 14:46:33 by tbabou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,20 @@
 
 void	parsing(t_stack_node **a, int argc, char **argv)
 {
-	char	**argv2;
+	char	**split;
 
-	argv2 = argv;
 	if (argc < 2)
 		exit(1);
-	else if (argc == 2)
-	{
-		argv2 = ps_split(argv[1], ' ');
-		if (!argv2)
-			exit(1);
-	}
 	if (argc == 2)
 	{
-		init_stack_a(a, argv2 + 1, argv2);
-		leak(argv2);
+		split = ft_split(argv[1], ' ');
+		if (!split)
+			exit(1);
+		init_stack_a(a, split + 1, split);
+		ft_freesplit(split);
 	}
 	else
-		init_stack_a(a, argv2 + 1, NULL);
+		init_stack_a(a, argv + 1, NULL);
 }
 
 int	main(int argc, char **argv)
@@ -43,11 +39,11 @@ int	main(int argc, char **argv)
 	a = NULL;
 	b = NULL;
 	parsing(&a, argc, argv);
-	if (!ft_issorted(a))
+	if (!is_sorted(a))
 	{
-		if (ft_stacklen(a) == 2)
+		if (get_stack_len(a) == 2)
 			sa(&a, false);
-		else if (ft_stacklen(a) == 3)
+		else if (get_stack_len(a) == 3)
 			sort_three(&a);
 		else
 			turk_sort(&a, &b);
@@ -56,10 +52,10 @@ int	main(int argc, char **argv)
 	return (0);
 }
 
-int	ft_strlenw0(const char *s)
+int	ft_strlen_no_zero(const char *s)
 {
-	int i;
-	int index;
+	int	i;
+	int	index;
 
 	i = 0;
 	if (s[i] == '+' || s[i] == '-')

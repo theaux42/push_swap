@@ -6,7 +6,7 @@
 /*   By: tbabou <tbabou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 20:19:19 by tbabou            #+#    #+#             */
-/*   Updated: 2024/08/17 15:09:55 by tbabou           ###   ########.fr       */
+/*   Updated: 2024/08/20 14:20:17 by tbabou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	free_stack(t_stack_node **stack)
 void	print_error(t_stack_node **a, char **r)
 {
 	free_stack(a);
-	leak(r);
+	ft_freesplit(r);
 	write(2, "ERROR :/\n", 9);
 	exit(1);
 }

@@ -6,7 +6,7 @@
 /*   By: tbabou <tbabou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 22:37:57 by tbabou            #+#    #+#             */
-/*   Updated: 2024/08/17 15:09:55 by tbabou           ###   ########.fr       */
+/*   Updated: 2024/08/20 14:40:50 by tbabou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	set_target_b(t_stack_node *a, t_stack_node *b)
 			current_a = current_a->next;
 		}
 		if (best == LONG_MAX)
-			b->target = min_o_stack(a);
+			b->target = get_min(a);
 		else
 			b->target = target;
 		b = b->next;

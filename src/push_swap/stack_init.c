@@ -6,7 +6,7 @@
 /*   By: tbabou <tbabou@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 19:48:20 by tbabou            #+#    #+#             */
-/*   Updated: 2024/08/17 15:09:55 by tbabou           ###   ########.fr       */
+/*   Updated: 2024/08/20 15:20:58 by tbabou           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static long	ft_atol(const char *s)
 	long	res;
 	int		sign;
 
-	if (ft_strlenw0(s) > 11)
+	if (ft_strlen_no_zero(s) > 11)
 		error_r();
 	res = 0;
 	sign = 1;
@@ -35,7 +35,7 @@ static long	ft_atol(const char *s)
 	return (res * sign);
 }
 
-static void	add_node(t_stack_node **stack, int n)
+static void	add_node_to_stack(t_stack_node **stack, int n)
 {
 	t_stack_node	*node;
 	t_stack_node	*last_node;
@@ -54,7 +54,7 @@ static void	add_node(t_stack_node **stack, int n)
 	}
 	else
 	{
-		last_node = point_on_last(*stack);
+		last_node = get_last(*stack);
 		last_node->next = node;
 		node->prev = last_node;
 	}
@@ -75,12 +75,12 @@ void	init_stack_a(t_stack_node **a, char **argv, char **r)
 			print_error(a, r);
 		if (doublons_error(*a, (int)n))
 			print_error(a, r);
-		add_node(a, (int)n);
+		add_node_to_stack(a, (int)n);
 		i++;
 	}
 }
 
-t_stack_node	*the_cheapest(t_stack_node *stack)
+t_stack_node	*get_cheapest(t_stack_node *stack)
 {
 	if (!stack)
 		return (NULL);
